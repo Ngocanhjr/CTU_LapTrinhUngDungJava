@@ -1,0 +1,2 @@
+com\myctu\model\User.class
+com\myctu\dao\JDBCConnection.class
