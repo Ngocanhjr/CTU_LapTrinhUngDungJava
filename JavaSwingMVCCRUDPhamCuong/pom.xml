@@ -11,5 +11,11 @@
         <maven.compiler.target>22</maven.compiler.target>
         <exec.mainClass>com.myctu.javaswingmvccrudphamcuong.JavaSwingMVCCRUDPhamCuong</exec.mainClass>
     </properties>
-    <dependencies></dependencies>
+    <dependencies>
+        <dependency>
+            <groupId>com.microsoft.sqlserver</groupId>
+            <artifactId>mssql-jdbc</artifactId>
+            <version>12.6.3.jre8</version>
+        </dependency>
+    </dependencies>
 </project>

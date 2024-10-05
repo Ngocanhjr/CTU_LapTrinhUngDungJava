@@ -4,17 +4,27 @@
  */
 package com.myctu.javaswingmvccrudphamcuong.view;
 
+import com.myctu.javaswingmvccrudphamcuong.model.Product;
+import com.myctu.javaswingmvccrudphamcuong.model.ProductDAO;
+
 /**
  *
  * @author ASUS
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class ProductView extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public ProductView() {
         initComponents();
+        run();
+    }
+    
+    private void run (){
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setVisible(true);
     }
 
     /**
@@ -44,7 +54,6 @@ public class NewJFrame extends javax.swing.JFrame {
         tbProduct = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(400, 300));
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -57,6 +66,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.add(btnAdd);
 
         btnEdit.setText("Edit");
+        btnEdit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEditActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnEdit);
 
         btnDelete.setText("Delete");
@@ -71,6 +85,11 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel2.add(btnRecord);
 
         btnCancel.setText("Cancel");
+        btnCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancelActionPerformed(evt);
+            }
+        });
         jPanel2.add(btnCancel);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
@@ -134,6 +153,11 @@ public class NewJFrame extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
+        String name = tfProductName.getText();
+        int quantity = Integer.parseInt(tfQuantity.getText());
+        Product newProduct = new Product(name, quantity);
+        ProductDAO newPr = new ProductDAO();
+        newPr.add(newProduct);
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDeleteActionPerformed
@@ -152,41 +176,23 @@ public class NewJFrame extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_tfQuantityActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+    private void btnCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelActionPerformed
+        // TODO add your handling code here:
+        dispose();
+    }//GEN-LAST:event_btnCancelActionPerformed
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new NewJFrame().setVisible(true);
-            }
-        });
-    }
+    private void btnEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditActionPerformed
+        // TODO add your handling code here:
+        int id = Integer.parseInt(tfId.getText());
+        String name = tfProductName.getText();
+        int quantity = Integer.parseInt(tfQuantity.getText());
+        Product updateProduct = new Product(id, name, quantity);
+        ProductDAO updateProductDAO = new ProductDAO();
+        updateProductDAO.edit(updateProduct);   
+    }//GEN-LAST:event_btnEditActionPerformed
 
+  
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
     private javax.swing.JButton btnCancel;
@@ -205,4 +211,5 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JTextField tfProductName;
     private javax.swing.JTextField tfQuantity;
     // End of variables declaration//GEN-END:variables
+
 }
