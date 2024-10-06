@@ -39,16 +39,16 @@ public class DatabaseUtils {
         return conn;
     }
 
-    public static void closeConnection(Connection conn) {
-        try {
-            if (conn != null && !conn.isClosed()) {
-                conn.close();
-                System.out.println("Database closed!.");
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(DatabaseUtils.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }
+//    public  void closeConnection(Connection conn) {
+//        try {
+//            if (conn != null && !conn.isClosed()) {
+//                conn.close();
+//                System.out.println("Database closed!.");
+//            }
+//        } catch (SQLException ex) {
+//            Logger.getLogger(DatabaseUtils.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//    }
 //    public static void main(String[] args) {
 //       Connection conn =  getConnection();
 //    }
