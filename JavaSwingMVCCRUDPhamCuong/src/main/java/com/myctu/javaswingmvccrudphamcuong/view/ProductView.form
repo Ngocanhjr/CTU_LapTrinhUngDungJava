@@ -68,6 +68,7 @@
             <Component class="javax.swing.JButton" name="btnRecord">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Record"/>
+                <Property name="enabled" type="boolean" value="false"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="btnCancel">

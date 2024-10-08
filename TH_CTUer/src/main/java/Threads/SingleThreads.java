@@ -8,23 +8,25 @@ package Threads;
  *
  * @author GIGABYTE
  */
-public class SingleThreads extends Thread{
+public class SingleThreads extends Thread {
+
     String name;
 
     @Override
     public void run() {
         int count = 0;
-        
+
         System.out.println("Run--------------------------");
         while (count < 3) {
             System.out.println("Active count " + Thread.activeCount());
             name = Thread.currentThread().getName();
             count++;
             System.out.println(name);
-            if(name.equals("Threads1"))
+            if (name.equals("Threads1")) {
                 System.out.println("aaa");
-            else
+            } else {
                 System.out.println("bbbb");
+            }
         }
     }
 }

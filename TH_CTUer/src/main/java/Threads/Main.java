@@ -1,4 +1,4 @@
-/*
+    /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
@@ -11,6 +11,9 @@ package Threads;
 public class Main {
 
     public static void main(String[] args) {
+         /*
+        extends
+         */
         SingleThreads demo = new SingleThreads();
         demo.setName("Threads1");
 
@@ -26,5 +29,8 @@ public class Main {
         System.out.println("demo: " + demo.isAlive());
         System.out.println("Daenon: " + demo.isDaemon());
 
+        /*
+        interface
+         */
     }
 }

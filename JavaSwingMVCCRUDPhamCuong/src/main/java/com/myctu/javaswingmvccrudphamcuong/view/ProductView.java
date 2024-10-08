@@ -160,6 +160,7 @@ public class ProductView extends javax.swing.JFrame {
         jPanel2.add(btnDelete);
 
         btnRecord.setText("Record");
+        btnRecord.setEnabled(false);
         jPanel2.add(btnRecord);
 
         btnCancel.setText("Cancel");
