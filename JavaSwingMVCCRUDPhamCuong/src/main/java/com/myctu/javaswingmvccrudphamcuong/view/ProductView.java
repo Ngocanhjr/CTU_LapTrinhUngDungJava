@@ -52,10 +52,7 @@ public class ProductView extends javax.swing.JFrame {
     }
 
     private boolean validateProductData(String name, int quantity) {
-        if (name.length() == 0 || quantity == 0) {
-            return false;
-        }
-        return true;
+        return !(name.length() == 0 || quantity == 0);
     }
 
     //ĐỌC DỮ LIỆU TỪ TEXTFIELD  
@@ -83,9 +80,9 @@ public class ProductView extends javax.swing.JFrame {
 
         return newProduct;
     }
-
-    public void showListProduct(List<Product> products) {
-        tableModel.setData(products);
+//fix
+    public void setTableModel(ProductTableModel tableModel) {
+        tbProduct.setModel(tableModel);
     }
     
     public void fillInputForm(){
@@ -128,7 +125,7 @@ public class ProductView extends javax.swing.JFrame {
         tfProductName = new javax.swing.JTextField();
         lbQuantity = new javax.swing.JLabel();
         tfQuantity = new javax.swing.JTextField();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane2 = new javax.swing.JScrollPane();
         tbProduct = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -222,13 +219,20 @@ public class ProductView extends javax.swing.JFrame {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        tbProduct.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        tableModel = new ProductTableModel();
-        tbProduct.setModel(tableModel);
-        tbProduct.setShowGrid(true);
-        jScrollPane1.setViewportView(tbProduct);
+        tbProduct.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(tbProduct);
 
-        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jScrollPane2, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -313,7 +317,7 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lbId;
     private javax.swing.JLabel lbProductName;
     private javax.swing.JLabel lbQuantity;
@@ -322,5 +326,5 @@ public class ProductView extends javax.swing.JFrame {
     private javax.swing.JTextField tfProductName;
     private javax.swing.JTextField tfQuantity;
     // End of variables declaration//GEN-END:variables
-    private ProductTableModel tableModel;
+    
 }

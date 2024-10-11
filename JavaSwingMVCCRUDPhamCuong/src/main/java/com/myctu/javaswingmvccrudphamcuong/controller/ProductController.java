@@ -6,6 +6,7 @@ package com.myctu.javaswingmvccrudphamcuong.controller;
 
 import com.myctu.javaswingmvccrudphamcuong.model.Product;
 import com.myctu.javaswingmvccrudphamcuong.model.ProductDAO;
+import com.myctu.javaswingmvccrudphamcuong.model.ProductTableModel;
 import com.myctu.javaswingmvccrudphamcuong.view.ProductView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -27,11 +28,15 @@ public class ProductController {
     private ProductView productView;
 
     private ProductDAO productDAO;
+//fix
+    private ProductTableModel tableModel;
 
     public ProductController(ProductView view) {
         this.productView = view;
 
         productDAO = new ProductDAO();
+//fix
+        tableModel = new ProductTableModel();
 
         productView.addTableSelecctionListener(new TableSelecctionListener());
 
@@ -49,8 +54,10 @@ public class ProductController {
         try {
             //Đọc dữ liệu từ csdl về để hiển thị lên view
             List<Product> products = productDAO.getListProducts();
+//add fix            
+            tableModel.setData(products);
 
-            productView.showListProduct(products);
+            productView.setTableModel(tableModel);
 
             productView.setLocationRelativeTo(null);
             productView.setVisible(true);
@@ -73,8 +80,8 @@ public class ProductController {
                     try {
                         //Tự thêm try catch
 
-                        productView.showListProduct(productDAO.getListProducts());
-
+//                        productView.showListProduct(productDAO.getListProducts());
+                        tableModel.setData(productDAO.getListProducts());
                         JOptionPane.showMessageDialog(productView, "Added new product!!");
                     } catch (SQLException ex) {
                         Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
@@ -130,7 +137,8 @@ public class ProductController {
         @Override
         public void actionPerformed(ActionEvent e) {
             try {
-                productView.showListProduct(productDAO.getListProducts());
+//                productView.showListProduct(productDAO.getListProducts());
+                tableModel.setData(productDAO.getListProducts());
                 System.out.println("Refresh ~~");
             } catch (SQLException ex) {
                 Logger.getLogger(ProductController.class.getName()).log(Level.SEVERE, null, ex);
